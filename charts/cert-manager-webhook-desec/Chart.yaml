@@ -17,13 +17,11 @@ annotations:
   artifacthub.io/maintainers: |
     - name: Alex Ellwein
       email: alex.ellwein@gmail.com
-  artifacthub.io/containsSecurityUpdates: "true"
+  artifacthub.io/containsSecurityUpdates: "false"
   # kinds: added, changed, deprecated, removed, fixed, security.
   artifacthub.io/changes: |
-    - kind: security
-      description: "update Go toolchain to 1.27.4 to mitigate CVE-2026-97054 in the standard library"
-    - kind: changed
-      description: "bump dependencies, including golang.org/x/net to 0.63.0"
+    - kind: added
+      description: "first working implementation: DNS-01 challenges via the deSEC RRset API (Present and CleanUp)"
   artifacthub.io/signKey: |
     fingerprint: "FA1F0CE58313D2638809BD05D51650A7D1BE5944"
     url: https://gist.githubusercontent.com/aellwein/112e7c157c4f60165b62602b2b62c2d7/raw/491cc2925f43ddb015d63c95f5ea2bca1f281c8c/pubkey.asc
