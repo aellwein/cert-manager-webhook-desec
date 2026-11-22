@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+
+  get_release_tag:
+    runs-on: ubuntu-latest
+    outputs:
+      tag_name: ${{ steps.set_tag.outputs.tag_name }}
+    steps:
+      - name: Set tag output
+        id: set_tag
+        run: |
+          echo "GITHUB_REF=${GITHUB_REF}"
+          echo "tag name: ${GITHUB_REF#refs/*/}"
+          echo "tag_name=${GITHUB_REF#refs/*/}" >> "$GITHUB_OUTPUT"
+
+  build_release:
+    needs: get_release_tag
+    uses: ./.github/workflows/build_image_for_arch.yml
+    secrets: inherit
+    with:
+      branch: main
+      platform: all
+      image_tag: ${{ needs.get_release_tag.outputs.tag_name }}
+      chart_version: ${{ needs.get_release_tag.outputs.tag_name }}
+      deploy_oci_chart: true
