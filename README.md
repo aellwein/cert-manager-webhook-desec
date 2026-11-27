@@ -54,6 +54,19 @@ From that point, the issuer configured above should be able to solve
 the DNS01 challenges using ``cert-manager-webhook-desec``.
 
 
+Supported platforms
+-------------------
+
+Release images are published as multi-architecture images for:
+
+- linux/amd64
+- linux/arm64
+- linux/arm/v7
+- linux/s390x
+- linux/ppc64le
+- linux/riscv64
+
+
 Testing
 -------
 
